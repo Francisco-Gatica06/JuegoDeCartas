@@ -1,4 +1,6 @@
+import java.util.Objects;
 import java.util.Scanner;
+import java.util.Random;
 
 public class CartasJuego {
     public static void main(String[] args) {
@@ -12,11 +14,11 @@ public class CartasJuego {
         for (int i = 0; i < crearMatrizCartas().length; i++) {
             for (int j = 0; j < crearMatrizCartas()[i].length; j++) {
                 crearMatrizCartas()[i][0] = nombreCarta;
-                crearMatrizCartas()[i][j] = puntaje;
+                crearMatrizCartas()[1][j] = puntaje;
             }
         }
     }
-    public static void inicializarCartasJuego() {
+    public static void inicializarCartasJuego(int fila, int columna) {
         agregarCartas("A", "11");
         agregarCartas("Dos", "2");
         agregarCartas("Tres", "3");
@@ -31,33 +33,31 @@ public class CartasJuego {
         agregarCartas("Q", "10");
         agregarCartas("K", "10");
     }
-    public static void obtenerCartas() {}
+    public static void obtenerCartas() {
+        Random aleatorio = new Random();
+        System.out.println(1+aleatorio.nextInt( (9+1) - 1));
+
+    }
     public static void jugar() {}
     public static void salir() {
         System.exit(0);
     }
-    public static String leerDato() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Escoja una opcion: ");
-        String input = scanner.nextLine();
-        scanner.close();
-        return input;
-    }
     public static void menu() {
         while (true) {
-            System.out.println("");
-            System.out.println("1 = Obterner carta");
-            System.out.println("2 = Jugar");
-            System.out.println("3 = Salir");
-            if (leerDato() == "1") {
-                obtenerCartas();
-            } else if (leerDato() == "2" ) {
+            System.out.println("Bienvenido al blackjack de Francisco.");
+            System.out.println("1 = Jugar");
+            System.out.println("2 = Salir");
+            Scanner lectura = new Scanner(System.in);
+            System.out.print("Escoja una opcion: ");
+            String input = lectura.next();
+            if (input == "1") {
                 jugar();
-            } else if (leerDato() == "3") {
+            } else if (input == "2") {
                 System.out.println("Programa finalizado");
                 salir();
+            } else {
+                System.out.println("Opcion no valida");
             }
-
         }
     }
 
